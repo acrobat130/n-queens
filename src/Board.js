@@ -91,14 +91,17 @@
       } else {
         return false;
       }
-      // for (var key in this.attributes){
-      //   console.log("key", key);
-      // }
-      // console.log("attributes", this.attributes[]);
+
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
+      console.log("THIS", this)
+      for (var row in this.attributes){
+        if(this.hasRowConflictAt(row)){
+          return true;
+        }
+      }
       return false; // fixme
     },
 
