@@ -142,51 +142,27 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-    var nextRowIndex = 0;
-    var arrLength = majorDiagonalColumnIndexAtFirstRow[0].length;
-    var currentRow = majorDiagonalColumnIndexAtFirstRow;
-
-    for (var j in this.attributes){
-      for(var i = 0; i < arrLength; i++){
-        nextRowIndex++;
-        //console.log(majorDiagonalColumnIndexAtFirstRow);
-        // console.log("type of currentRowI", j );
-        
-
-        //while(typeof Number(j) === 'number'){
-
-
-          if(typeof j === 'number'){
-            console.log(j);
-            if(currentRow[Number(j)][i] === 1 && currentRow[Number(j)][i] ===
-             this.attributes[nextRowIndex][i+1]){
-              currentRow = this.attributes[Number(j)];
-              return true;
-
-            }          
-          }
-//          console.log("type of ", typeof Number(j));
-        //}
+    var counter = 0;
+    for(var i = 0; i < this.get('n'); i++){
+      if(this.attributes[i][majorDiagonalColumnIndexAtFirstRow + i] === 1){
+        counter++ ;
       }
     }
-      return false;
-
-
-          // if(counter > 1){
-          //   return true;
-          // }
-          // else{
-          //   return false;
-          // }
+          if(counter > 1){
+            return true;
+          }
+          else{            
+          }return false;
     },
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-    for(var col in this.attributes){
-      if(this.hasMajorDiagonalConflictAt(this.attributes)){
-        return true;
-      }      
-    }
+
+      for(var j = 0; j < this.attributes[0].length; j++){
+        if(this.hasMajorDiagonalConflictAt(j)){
+          return true;
+        }      
+      }
     return false; // fixme
 
     },
