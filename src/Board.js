@@ -142,35 +142,38 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      var counter = 0;
-      var rowFound = 0;
-      var columnFound = 0;
+    var nextRowIndex = 0;
+    var arrLength = majorDiagonalColumnIndexAtFirstRow[0].length;
+    var currentRow = majorDiagonalColumnIndexAtFirstRow;
 
-        for(var i = 0; i < majorDiagonalColumnIndexAtFirstRow[0].length; i++){
-          if(majorDiagonalColumnIndexAtFirstRow[i] === 1){
-            rowFound = i;
-            counter++ ;
+    for (var j in this.attributes){
+      for(var i = 0; i < arrLength; i++){
+        nextRowIndex++;
+        //console.log(majorDiagonalColumnIndexAtFirstRow);
+        // console.log("type of currentRowI", j );
+        
+          // console.log("type of ", typeof Number(j));
+          // console.log(j)
 
-          }
+        while(typeof Number(j) === 'number'){
 
-          for (var n = 0; n < majorDiagonalColumnIndexAtFirstRow[0].length; n++){
-
-            if(this.attributes[rowFound + n][columnFound + n] === 1){
-              console.log(majorDiagonalColumnIndexAtFirstRow);
-              console.log("columnFound ", columnFound + n );
-              console.log("rowFound ", rowFound + n );
-              counter++ ;
-              // return true;
-            }
-          }
-          if(counter > 1){
+          if(currentRow[Number(j)][i] === 1 && currentRow[Number(j)][i] ===
+           this.attributes[nextRowIndex][i+1]){
             return true;
-          }
-          else{
-            return false;
-          }
 
-        }        
+          }          
+        }
+      }
+    }
+      return false;
+
+
+          // if(counter > 1){
+          //   return true;
+          // }
+          // else{
+          //   return false;
+          // }
     },
 
     // test if any major diagonals on this board contain conflicts
