@@ -152,17 +152,21 @@
         //console.log(majorDiagonalColumnIndexAtFirstRow);
         // console.log("type of currentRowI", j );
         
-          // console.log("type of ", typeof Number(j));
-          // console.log(j)
 
-        while(typeof Number(j) === 'number'){
+        //while(typeof Number(j) === 'number'){
 
-          if(currentRow[Number(j)][i] === 1 && currentRow[Number(j)][i] ===
-           this.attributes[nextRowIndex][i+1]){
-            return true;
 
-          }          
-        }
+          if(typeof j === 'number'){
+            console.log(j);
+            if(currentRow[Number(j)][i] === 1 && currentRow[Number(j)][i] ===
+             this.attributes[nextRowIndex][i+1]){
+              currentRow = this.attributes[Number(j)];
+              return true;
+
+            }          
+          }
+//          console.log("type of ", typeof Number(j));
+        //}
       }
     }
       return false;
